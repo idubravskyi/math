@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Matemàtiques · Deures i pràctica</title>
+<style>
+:root{--bg:#f5f7fb;--ink:#18243b;--blue:#254c97;--line:#dbe2f0;--good:#176b44;--bad:#b92c3b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 system-ui,-apple-system,sans-serif}
+header{background:linear-gradient(125deg,#183469,#386bb5);color:white;padding:28px max(22px,calc((100vw - 1100px)/2))}
+header h1{margin:0;font-size:clamp(28px,4vw,40px)}header p{margin:7px 0 0;color:#e6efff}
+nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}nav a{color:white;border:1px solid #b3cbee;border-radius:20px;padding:7px 15px;text-decoration:none}
+main{max-width:1100px;margin:auto;padding:20px 18px 60px}section{background:white;border-radius:18px;padding:24px;margin:18px 0;box-shadow:0 3px 18px #172d5010}
+h2{margin-top:0;color:#1c4281;font-size:27px}h3{color:#244985;margin-top:22px}p{margin:10px 0}small,.sub{color:#50617c}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.task{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fbfcff}
+.task label{display:block;font-weight:600;margin-bottom:8px}.task input,.task select{padding:11px;width:min(100%,220px);font-size:17px;border:1px solid #9caac2;border-radius:9px;background:white;color:var(--ink)}
+.task .result{min-height:25px;margin-top:7px;font-size:15px}.ok{color:var(--good)}.no{color:var(--bad)}
+button{background:var(--blue);color:white;border:0;border-radius:10px;padding:11px 18px;font-size:16px;cursor:pointer;margin:8px 8px 0 0}
+button.secondary{background:#e9eef8;color:#203e6c}button.reset{padding:10px 13px;background:#eef1f8;color:#294262}
+details{background:#eef3fc;border-radius:9px;padding:9px 13px;margin-top:8px;font-size:15px}
+table{width:100%;border-collapse:collapse;text-align:center;min-width:510px}td,th{padding:12px 7px;border:1px solid var(--line)}th{background:#e5edfb} .scroll{overflow-x:auto}
+.rule{background:#f0f5fe;border-left:4px solid #457bc8;padding:13px;border-radius:6px}
+.step{font-weight:800;color:#224d92;font-size:20px}.score{font-weight:700;padding:10px 0}
+@media(max-width:700px){.grid{grid-template-columns:1fr}section{padding:17px}body{font-size:16px}}
+</style>
+</head>
+<body>
+<header><h1>Matemàtiques · Математика</h1><p>Deures, teoria i pràctica · Домашні завдання, теорія та практика</p>
+<nav><a href="#deures">Deures · Домашнє</a><a href="#teoria">Teoria · Пояснення</a><a href="#practica">Pràctica · Тренажер</a></nav>
+</header>
+<main>
+<section id="deures"><h2>Deures · 22/11/2026</h2><p><strong>Canvi d'unitats de longitud</strong> · Перетворення одиниць довжини</p>
+<p class="sub">Завдання відтворені з наданого аркуша. Вводь число без одиниці (десяткові дроби можна писати з комою). Перевірка не показує розв'язок наперед.</p>
+<h3>1. Completa · Заповни пропуски</h3><div id="hw1" class="grid"></div>
+<h3>2. Escriu les unitats que hi falten · Напиши пропущені одиниці</h3><div id="hw2" class="grid"></div>
+<h3>3. Expressa aquestes longituds en metres i ordena-les de gran a petita</h3>
+<p>Перетвори всі величини в метри та розташуй їх від найбільшої до найменшої.</p><div id="hw3" class="grid"></div>
+<div class="task" style="margin-top:12px"><label for="order">Ordre · Порядок (запиши номери рядків через кому, наприклад 2,1,3,5,4)</label><input id="order" placeholder="1,2,3,4,5"><div class="result" id="order-result"></div></div>
+<button onclick="checkHomework()">Comprova · Перевірити домашнє</button><button class="reset" onclick="resetSection('deures')" title="Скинути результати" aria-label="Скинути результати">♻ Скинути</button><div class="score" id="hw-score" aria-live="polite"></div>
+</section>
+<section id="teoria"><h2>Teoria · Пояснення теми</h2>
+<p><strong>Sistema mètric decimal</strong> · Десяткова метрична система. Одиниці довжини розташовані від найбільшої до найменшої.</p>
+<div class="scroll"><table><thead><tr><th>km</th><th>hm</th><th>dam</th><th>m</th><th>dm</th><th>cm</th><th>mm</th></tr></thead><tbody><tr><td>quilòmetre</td><td>hectòmetre</td><td>decàmetre</td><td>metre</td><td>decímetre</td><td>centímetre</td><td>mil·límetre</td></tr><tr><td>кілометр</td><td>гектометр</td><td>декаметр</td><td>метр</td><td>дециметр</td><td>сантиметр</td><td>міліметр</td></tr></tbody></table></div>
+<div class="rule"><p><strong>Cap a la dreta → · Праворуч (до меншої одиниці)</strong>: кожен крок множимо на 10.</p><p><strong>← Cap a l'esquerra · Ліворуч (до більшої одиниці)</strong>: кожен крок ділимо на 10.</p></div>
+<h3>Exemples · Приклади</h3>
+<p><span class="step">3 km = 3000 m</span> — від km до m три кроки праворуч, тому 3 × 10 × 10 × 10 = 3000.</p>
+<p><span class="step">420 mm = 42 cm</span> — від mm до cm один крок ліворуч, тому 420 ÷ 10 = 42.</p>
+<p><span class="step">765 cm = 7,65 m</span> — два кроки ліворуч, тому 765 ÷ 100 = 7,65.</p>
+<p><span class="step">0,7 hm = 70 m</span> — два кроки праворуч, тому 0,7 × 100 = 70.</p>
+<h3>Com ordenar · Як порівнювати</h3><p>Спочатку переведи всі величини в <strong>однакові одиниці</strong> (наприклад, у метри), а потім порівнюй числа. <em>De gran a petita</em> означає від більшого до меншого.</p>
+</section>
+<section id="practica"><h2>Pràctica · 50 вправ</h2><p>Вправи йдуть від простих до складних. Рівень 1: вибір відповіді; рівень 2: визначення одиниці; рівень 3: самостійна відповідь.</p><div class="score" id="practice-score">Результат: 0 / 50</div><div id="practice-list"></div>
+<button onclick="checkPractice()">Comprova · Перевірити всі</button><button class="reset" onclick="resetSection('practica')" title="Скинути результати" aria-label="Скинути результати">♻ Скинути</button>
+</section>
+</main>
+<script>
+const units=['km','hm','dam','m','dm','cm','mm'];
+const fmt=n=>String(Number(n.toFixed(8))).replace('.',',');
+const parseNum=v=>Number(String(v).trim().replace(',','.').replace(/\s/g,''));
+const equal=(a,b)=>Number.isFinite(parseNum(a))&&Math.abs(parseNum(a)-Number(b))<0.0000001;
+const hw1=[['3000 mm','m',3],['12 km','m',12000],['2000 m','hm',20],['685 hm','dam',6850],['65 m','mm',65000],['77 m','cm',7700],['85 dam','m',850],['7000 m','dam',700],['25 dm','cm',250],['59 km','m',59000],['6000 cm','m',60],['7800 dam','km',78]];
+const hw2=[['38 m = 380','dm'],['12 km = 1200','dam'],['68 cm = 680','mm'],['33 dam = 330','m'],['38 hm = 380','dam'],['124 dm = 12400','mm'],['420 mm = 42','cm'],['749 m = 74900','cm'],['2670 dam = 267','hm']];
+const hw3=[['3,6 km',3600],['0,7 hm',70],['197 dam',1970],['765 cm',7.65],['9704 mm',9.704]];
+function item(container,id,title,type,options){const d=document.createElement('div');d.className='task';const l=document.createElement('label');l.htmlFor=id;l.textContent=title;d.append(l);let inp;
+if(type==='select'){inp=document.createElement('select');const ph=document.createElement('option');ph.value='';ph.textContent='— Tria · Обери —';inp.append(ph);options.forEach(o=>{const op=document.createElement('option');op.value=String(o);op.textContent=String(o);inp.append(op)})}
+else{inp=document.createElement('input');inp.inputMode='decimal';inp.autocomplete='off';inp.placeholder='Відповідь'}inp.id=id;d.append(inp);
+const res=document.createElement('div');res.className='result';res.id=id+'-result';res.setAttribute('aria-live','polite');d.append(res);container.append(d)}
+hw1.forEach((x,i)=>item(document.getElementById('hw1'),'h1-'+i,x[0]+' = ? '+x[1],'input'));
+hw2.forEach((x,i)=>item(document.getElementById('hw2'),'h2-'+i,x[0]+' …','select',units));
+hw3.forEach((x,i)=>item(document.getElementById('hw3'),'h3-'+i,(i+1)+'. '+x[0]+' = ? m','input'));
+function mark(id,correct,answer){const e=document.getElementById(id+'-result');e.className='result '+(correct?'ok':'no');e.textContent=correct?'✓ Correcte · Правильно':'✗ Revisa · Перевір ще раз';}
+function checkHomework(){let score=0,total=27;
+hw1.forEach((x,i)=>{let id='h1-'+i,c=equal(document.getElementById(id).value,x[2]);score+=c;mark(id,c)});
+hw2.forEach((x,i)=>{let id='h2-'+i,c=document.getElementById(id).value===x[1];score+=c;mark(id,c)});
+hw3.forEach((x,i)=>{let id='h3-'+i,c=equal(document.getElementById(id).value,x[1]);score+=c;mark(id,c)});
+const order=document.getElementById('order').value.replace(/\s/g,'');const c=order==='1,3,2,5,4';score+=c;mark('order',c);document.getElementById('hw-score').textContent='Результат: '+score+' / '+total}
+function convert(n,from,to){return n*Math.pow(10,units.indexOf(to)-units.indexOf(from))}
+const practice=[];
+const seeds=[[2,'km','m'],[5,'m','cm'],[4,'hm','m'],[7,'dm','cm'],[3,'m','mm'],[6,'dam','m'],[8,'cm','mm'],[9,'km','hm'],[12,'m','dm'],[15,'hm','dam'],[25,'cm','mm'],[42,'dam','m'],[11,'km','dam'],[18,'dm','mm'],[23,'m','cm'],[36,'hm','m'],[47,'cm','mm'],[52,'dam','dm'],[64,'km','m'],[75,'m','mm']];
+seeds.forEach((x,i)=>practice.push({kind:'choose',n:x[0],from:x[1],to:x[2],answer:convert(...x),level:1}));
+const mids=[[36,'m','dm'],[4,'km','m'],[82,'cm','mm'],[7,'hm','dam'],[25,'dam','m'],[63,'dm','cm'],[91,'m','mm'],[48,'km','hm'],[3,'m','cm'],[14,'hm','m'],[6,'dam','dm'],[73,'cm','mm'],[52,'km','dam'],[84,'dm','mm'],[17,'hm','cm']];
+mids.forEach(x=>practice.push({kind:'unit',n:x[0],from:x[1],to:x[2],answer:x[2],value:convert(...x),level:2}));
+const advanced=[[0.6,'km','m'],[4500,'mm','m'],[12.4,'hm','m'],[870,'cm','m'],[2.35,'dam','cm'],[0.08,'km','cm'],[6800,'dm','km'],[39.5,'m','mm'],[0.75,'hm','dm'],[9765,'mm','m'],[45,'dam','km'],[6.08,'m','cm'],[0.009,'km','mm'],[754,'cm','dm'],[120.6,'dm','dam']];
+advanced.forEach(x=>practice.push({kind:'input',n:x[0],from:x[1],to:x[2],answer:convert(...x),level:3}));
+const list=document.getElementById('practice-list');
+practice.forEach((p,i)=>{if(i===0||i===20||i===35){const h=document.createElement('h3');h.textContent=['Nivell 1 · Обери правильне число','Nivell 2 · Обери правильну одиницю','Nivell 3 · Напиши відповідь самостійно'][i===0?0:i===20?1:2];list.append(h);const grid=document.createElement('div');grid.className='grid';grid.id='level'+p.level;list.append(grid)}
+const holder=document.getElementById('level'+p.level),id='p-'+i;
+if(p.kind==='choose'){const right=p.answer;const choices=[right,right*10,right/10].sort((a,b)=>((i*17+a)%13)-((i*17+b)%13)).map(fmt);item(holder,id,(i+1)+'. '+fmt(p.n)+' '+p.from+' = ? '+p.to,'select',choices)}
+if(p.kind==='unit')item(holder,id,(i+1)+'. '+fmt(p.n)+' '+p.from+' = '+fmt(p.value)+' …','select',units);
+if(p.kind==='input')item(holder,id,(i+1)+'. '+fmt(p.n)+' '+p.from+' = ? '+p.to,'input');
+const task=document.getElementById(id).parentElement,details=document.createElement('details'),summary=document.createElement('summary');summary.textContent='Pista · Підказка';details.append(summary);const direction=units.indexOf(p.to)>units.indexOf(p.from)?'помнож':'поділи';const steps=Math.abs(units.indexOf(p.to)-units.indexOf(p.from));details.append(document.createTextNode('Порахуй '+steps+' крок(и): '+direction+' на 10 за кожен крок.'));task.append(details);
+});
+function checkPractice(){let score=0;practice.forEach((p,i)=>{let id='p-'+i,val=document.getElementById(id).value,c=p.kind==='unit'?val===p.answer:val!==''&&equal(val,p.answer);score+=c;mark(id,c)});document.getElementById('practice-score').textContent='Результат: '+score+' / 50'}
+function resetSection(section){document.querySelectorAll('#'+section+' input').forEach(e=>e.value='');document.querySelectorAll('#'+section+' select').forEach(e=>e.value='');document.querySelectorAll('#'+section+' .result').forEach(e=>{e.textContent='';e.className='result'});document.querySelectorAll('#'+section+' details').forEach(e=>e.open=false);document.getElementById(section==='deures'?'hw-score':'practice-score').textContent=section==='deures'?'':'Результат: 0 / 50'}
+</script>
+</body></html>
